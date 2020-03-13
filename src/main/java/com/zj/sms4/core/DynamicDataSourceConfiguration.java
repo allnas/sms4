@@ -26,7 +26,7 @@ public class DynamicDataSourceConfiguration {
         log.info("#######  init datasource #######");
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         //设置原始数据源
-        HashMap<Object, Object> dataSourcesMap = new HashMap<>();
+        HashMap<Object, Object> dataSourcesMap = new HashMap<>(4);
         HashSet<SupportDatasourceEnum> dataSet = DataSourceContextHolder.getDataSourceSet();
         for (SupportDatasourceEnum supportDatasourceEnum : dataSet) {
             DataSource dataSource = this.createDataSourceProperties(supportDatasourceEnum);

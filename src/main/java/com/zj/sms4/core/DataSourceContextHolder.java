@@ -4,14 +4,17 @@ import com.zj.sms4.enums.SupportDatasourceEnum;
 
 import java.util.HashSet;
 
+/**
+ * @author zhaojin
+ */
 public class DataSourceContextHolder {
 
-    private static final HashSet<SupportDatasourceEnum> dataSourceSet = new HashSet<>();
+    private static final HashSet<SupportDatasourceEnum> DATA_SOURCE_SET = new HashSet<>();
 
-    private static final ThreadLocal<String> databaseHolder = new ThreadLocal<>();
+    private static final ThreadLocal<String> DATABASE_HOLDER = new ThreadLocal<>();
 
     public static void setDatabaseHolder(SupportDatasourceEnum supportDatasourceEnum) {
-        databaseHolder.set(supportDatasourceEnum.toString());
+        DATABASE_HOLDER.set(supportDatasourceEnum.toString());
     }
 
     /**
@@ -20,7 +23,7 @@ public class DataSourceContextHolder {
      * @return
      */
     public static String getDatabaseHolder() {
-        return databaseHolder.get();
+        return DATABASE_HOLDER.get();
     }
 
     /**
@@ -29,7 +32,7 @@ public class DataSourceContextHolder {
      * @param supportDatasourceEnum
      */
     public static void addDatasource(SupportDatasourceEnum supportDatasourceEnum) {
-        dataSourceSet.add(supportDatasourceEnum);
+        DATA_SOURCE_SET.add(supportDatasourceEnum);
     }
 
     /**
@@ -38,13 +41,13 @@ public class DataSourceContextHolder {
      * @return
      */
     public static HashSet<SupportDatasourceEnum> getDataSourceSet() {
-        return dataSourceSet;
+        return DATA_SOURCE_SET;
     }
 
     /**
      * 清除上下文数据
      */
     public static void clear() {
-        databaseHolder.remove();
+        DATABASE_HOLDER.remove();
     }
 }
