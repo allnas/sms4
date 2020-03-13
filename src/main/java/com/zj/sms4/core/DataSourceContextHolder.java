@@ -3,11 +3,14 @@ package com.zj.sms4.core;
 import com.zj.sms4.enums.SupportDatasourceEnum;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author zhaojin
  */
 public class DataSourceContextHolder {
+
+    private DataSourceContextHolder(){}
 
     private static final HashSet<SupportDatasourceEnum> DATA_SOURCE_SET = new HashSet<>();
 
