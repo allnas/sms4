@@ -9,6 +9,8 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 /**
  * @author zhaojin
  */
@@ -20,7 +22,7 @@ public class DataSourceConfigRegister implements ImportSelector {
     public String[] selectImports(AnnotationMetadata annotationMetadata) {
         AnnotationAttributes attributes = AnnotationAttributes.fromMap(annotationMetadata.getAnnotationAttributes(AppDataSource.class.getName()));
         log.info("#######  datasource import #######");
-        if (null != attributes) {
+        if (Objects.nonNull(attributes)) {
             Object object = attributes.get("datasourceType");
             SupportDatasourceEnum[] supportDatasourceEnums = (SupportDatasourceEnum[]) object;
             for (SupportDatasourceEnum supportDatasourceEnum : supportDatasourceEnums) {
